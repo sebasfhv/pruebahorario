@@ -1,0 +1,81 @@
+Ext.define("Event", {
+	extend: "Ext.data.Model",
+	config: {
+		fields: [{
+			name: 'event',
+			type: 'string'
+		}, {
+			name: 'title',
+			type: 'string'
+		}, {
+			name: 'start',
+			type: 'date',
+			dateFormat: 'c'
+		}, {
+			name: 'end',
+			type: 'date',
+			dateFormat: 'c'
+		}, {
+			name: 'css',
+			type: 'string'
+		}]
+	}
+});
+
+// always base events from today
+var day = (new Date()).getDate(),
+	month = (new Date()).getMonth(),
+	year = (new Date()).getFullYear();
+
+var eventStore = Ext.create('Ext.data.Store', {
+    model: 'Event',
+    data: [{
+        event: '7:00 - 8:00',
+        title: 'Asignatura 1',
+        start: new Date(year, month,day, 7, 0),
+        end: new Date(year, month, day, 8, 0),
+	    css: 'red'
+    }, {
+        event: '8:00 - 9:00',
+	    title: 'Asigantura 2',
+        start: new Date(year, month, day, 8, 0),
+        end: new Date(year, month, day, 9, 0),
+	    css: 'blue'
+    }, {
+        event: '10:00 - 11:00',
+	    title: 'asigantura 3',
+        start: new Date(year, month, day, 10, 0),
+        end: new Date(year, month, day, 11, 0),
+	    css: 'green'
+    }, {
+        event: '11:00 - 12:00',
+	    title: 'asignatura 4',
+        start: new Date(year, month, day, 11, 0),
+        end: new Date(year, month, day, 12, 0),
+	    css: 'green'
+    }, {
+        event: '7:00 - 8:00',
+        title: 'Asignatura 1',
+        start: new Date(year, month, day+1, 7,0),
+        end: new Date(year, month, day +1, 8, 0),
+	    css: 'blue'
+    }, {
+        event: '8:00- 9:00',
+	    title: 'Asignatura 2',
+        start: new Date(year, month, day+1, 8, 0),
+        end: new Date(year, month, day+1, 9, 0),
+	    css: 'blue'
+    }, {
+        event: '10:00 - 11:00',
+	    title: 'Asignatura 3',
+        start: new Date(year, month,  day+1, 10, 0),
+        end: new Date(year, month,  day+1, 11, 0),
+	    css: 'green'
+    }, {
+        event: '11:00 - 12:00',
+	    title: 'Asignatura 4',
+        start: new Date(year, month,  day+1, 11, 0),
+        end: new Date(year, month,  day+1, 12, 0),
+	    css: 'red'
+    }]
+});
